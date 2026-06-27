@@ -1,0 +1,128 @@
+{
+  "entities": {
+    "Inventory": {
+      "title": "Inventory",
+      "description": "Stock levels for products in the store.",
+      "type": "object",
+      "properties": {
+        "productId": { "type": "string" },
+        "stock": { "type": "number" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["productId", "stock"]
+    },
+    "ContactMessage": {
+      "title": "Contact Message",
+      "description": "Messages sent through the contact form.",
+      "type": "object",
+      "properties": {
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "to": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["new", "read", "replied"] }
+      },
+      "required": ["firstName", "lastName", "email", "subject", "message", "to", "createdAt", "status"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer orders from the shop.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "Associated Firebase Auth user ID if logged in." },
+        "customer": {
+          "type": "object",
+          "properties": {
+            "vorname": { "type": "string" },
+            "nachname": { "type": "string" },
+            "email": { "type": "string", "format": "email" },
+            "strasse": { "type": "string" },
+            "plz": { "type": "string" },
+            "stadt": { "type": "string" },
+            "land": { "type": "string" },
+            "telefon": { "type": "string" }
+          }
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "productId": { "type": "string" },
+              "name": { "type": "string" },
+              "length": { "type": "number" },
+              "quantity": { "type": "number" },
+              "price": { "type": "number" }
+            }
+          }
+        },
+        "total": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "paymentDetails": { "type": "object" },
+        "status": { "type": "string", "enum": ["pending", "paid", "shipped", "cancelled"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["customer", "items", "total", "paymentMethod", "status", "createdAt"]
+    },
+    "User": {
+      "title": "User Profile",
+      "description": "Information and address details of registered customers.",
+      "type": "object",
+      "properties": {
+        "firstName": { "type": "string" },
+        "lastName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "strasse": { "type": "string" },
+        "plz": { "type": "string" },
+        "stadt": { "type": "string" },
+        "land": { "type": "string" },
+        "telefon": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["firstName", "lastName", "email", "createdAt"]
+    },
+    "StockHistory": {
+      "title": "Stock History",
+      "description": "Log of all inventory changes and movement.",
+      "type": "object",
+      "properties": {
+        "productId": { "type": "string" },
+        "color": { "type": "string" },
+        "length": { "type": "number" },
+        "previousStock": { "type": "number" },
+        "newStock": { "type": "number" },
+        "changeQuantity": { "type": "number" },
+        "reason": { "type": "string", "enum": ["Sale", "Manual Update", "Return", "Restock", "Cancelled"] },
+        "user": { "type": "string" },
+        "orderNumber": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["productId", "color", "length", "previousStock", "newStock", "changeQuantity", "reason", "user", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/inventory/{productId}": {
+      "schema": "Inventory",
+      "description": "Inventory stock levels for each product."
+    },
+    "/contacts/{messageId}": {
+      "schema": "ContactMessage",
+      "description": "Collection of contact form submissions."
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Collection of customer shop orders."
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Information and profile details of registered customers."
+    },
+    "/stock_history/{historyId}": {
+      "schema": "StockHistory",
+      "description": "Collection of stock adjustment and order logs."
+    }
+  }
+}

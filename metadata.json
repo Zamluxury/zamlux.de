@@ -1,0 +1,6 @@
+{
+  "name": "Zamluxury GmbH Cable Shop",
+  "description": "Professional industrial rubber cable shop specialized in H07RN-F cables.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
