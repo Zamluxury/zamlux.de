@@ -46,7 +46,7 @@ export const PRODUCTS = [
     id: 'p3',
     artNr: 'H07RN-F 5G2.5mm²',
     name: 'H07RN-F Baustellenkabel',
-    gtin: '4270004984293',
+    gtin: '4170000207764',
     description: 'Hochleistungs-Starkstromkabel (Drehstrom) für Motoren, Pumpen und industrielle Anlagen. Extrem widerstandsfähig gegen mechanischen Druck. Premium Zamluxury Qualität.',
     image: '/images/H07RNF_5G25_1.png',
     gallery: [
@@ -119,7 +119,7 @@ export const PRODUCT_SPECS_DATA: Record<string, Record<string, string>> = {
     crossSection: '5G2.5 mm²',
     voltage: '450/750 V',
     length: '100m',
-    gtin: '4270004984293',
+    gtin: '4170000207764',
     color: 'Schwarz',
     application: 'Industrie, professionelle Baustelle, Werkstatt, Starkstrom-Anwendungen',
     temperature: '-25°C bis +60°C',
