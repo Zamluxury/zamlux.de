@@ -1450,37 +1450,6 @@ const ProductSection = () => {
                     <span className="text-[9px] md:text-[10px] text-gray-400 font-bold ml-1 uppercase tracking-widest">({product.reviewsCount} REVIEWS)</span>
                   </div>
 
-                    {(() => {
-                    const selectedColor = selectedColors[product.id] || 'Schwarz';
-                    const stockKey = `${product.id}_${selectedColor}_${currentLength}`;
-                    const legacyStockKey = `${product.id}_${selectedColor}`;
-                    const getDefaultStockVal = (pId: string, col: string, len: number) => {
-                      if (pId === 'p1') return col === 'Schwarz' ? (len === 50 ? 75 : 75) : 50;
-                      if (pId === 'p2') return col === 'Schwarz' ? 120 : 80;
-                      return col === 'Schwarz' ? 85 : 50;
-                    };
-                    const productStock = stock[stockKey] ?? stock[legacyStockKey] ?? getDefaultStockVal(product.id, selectedColor, currentLength);
-                    return (
-                      <div className="mb-3 flex items-center gap-2 bg-slate-50/50 p-2 rounded-xl border border-gray-100/50 w-fit">
-                        {productStock > 0 ? (
-                          <>
-                            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse shrink-0" />
-                            <span className="text-[10px] font-black uppercase tracking-wider text-green-600">
-                              Auf Lager: {productStock} Stück
-                            </span>
-                          </>
-                        ) : (
-                          <>
-                            <span className="w-2 h-2 rounded-full bg-red-500 shrink-0" />
-                            <span className="text-[10px] font-black uppercase tracking-wider text-red-500 font-bold">
-                              Ausverkauft
-                            </span>
-                          </>
-                        )}
-                      </div>
-                    );
-                  })()}
-
                   <p className="text-[11px] md:text-[12px] text-gray-500 font-medium leading-relaxed mb-4 line-clamp-2">
                     {product.description}
                   </p>
