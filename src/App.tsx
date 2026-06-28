@@ -248,7 +248,7 @@ const ProductGallery = ({ product, selectedColor = 'Schwarz' }: { product: typeo
       {/* Main Image Container */}
       <div 
         className={cn(
-          "relative aspect-[4/3] rounded-lg bg-white flex items-center justify-center border border-gray-100 shadow-sm transition-all duration-500 hover:shadow-xl group/gallery cursor-zoom-in md:cursor-default overflow-hidden",
+          "relative aspect-[3/2] md:aspect-[4/3] rounded-lg bg-white flex items-center justify-center border border-gray-100 shadow-sm transition-all duration-500 hover:shadow-xl group/gallery cursor-zoom-in md:cursor-default overflow-hidden",
           product.id === 'p1' ? "p-1" : "p-4"
         )}
         onClick={() => {
