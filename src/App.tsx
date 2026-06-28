@@ -2022,6 +2022,7 @@ function MainContent({ onAuthClick, onCartClick, onCheckoutClick, currentPage, s
     if (currentPage === 'kontakt') return <KontaktPage onClose={goHome} />;
     if (currentPage === 'versand') return <VersandPage onClose={goHome} />;
     if (currentPage === 'rueckgabe') return <RueckgabePage onClose={goHome} />;
+  
     if (currentPage === 'faq') return <FAQPage onClose={goHome} />;
     return <LegalPage type={currentPage as keyof typeof LEGAL_CONTENT} onClose={goHome} />;
   };
@@ -2682,14 +2683,61 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
 };
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<PageType>('home');
-  const [isAuthOpen, setIsAuthOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+const [currentPage, setCurrentPage] = useState<PageType>('home');
+const [isAuthOpen, setIsAuthOpen] = useState(false);
+const [isCartOpen, setIsCartOpen] = useState(false);
+const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+const pageToPath: Record<string, string> = {
+  home: '/',
+  ueber_uns: '/about',
+  versand: '/delivery',
+  rueckgabe: '/returns',
+  kontakt: '/contact',
+  faq: '/faq',
+  agb: '/agb',
+  datenschutz: '/datenschutz',
+  impressum: '/impressum',
+  widerruf: '/widerruf',
+  kaeuferschutz: '/kaeuferschutz',
+  account: '/account',
+};
+const pathToPage: Record<string, PageType> = {
+  '/': 'home',
+  '/about': 'ueber_uns',
+  '/delivery': 'rueckgabe',
+  '/returns': 'versand',
+  '/contact': 'kontakt',
+  '/faq': 'faq',
+  '/agb': 'agb',
+  '/datenschutz': 'datenschutz',
+  '/impressum': 'impressum',
+  '/widerruf': 'widerruf',
+  '/kaeuferschutz': 'kaeuferschutz',
+  '/account': 'account',
+};
+const changePage = (page: PageType) => {
+  window.history.pushState({}, '', pageToPath[page] || '/');
+  setCurrentPage(page);
+};
+ useEffect(() => {
+  const page = pathToPage[window.location.pathname] || 'home';
+  setCurrentPage(page);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [currentPage]);
+  const handlePopState = () => {
+    const page = pathToPage[window.location.pathname] || 'home';
+    setCurrentPage(page);
+  };
+
+  window.addEventListener('popstate', handlePopState);
+
+  return () => {
+    window.removeEventListener('popstate', handlePopState);
+  };
+}, []);
+
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, [currentPage]);
 
   const initialOptions = {
     "clientId": import.meta.env.VITE_PAYPAL_CLIENT_ID || "AbzUGaZVN6IptGzc1fbGL7Am8gGaSCwZW1wETiG74-L2wBRglLvxKt9o7BYHwJkekeo3PL6ORxXvlEwM",
