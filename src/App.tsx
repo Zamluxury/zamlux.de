@@ -1476,7 +1476,7 @@ const ProductSection = () => {
                         { label: 'Spannung', value: PRODUCT_SPECS_DATA[product.id].voltage },
                         { label: 'Farbe', value: selectedColors[product.id] || 'Schwarz' },
                         { label: 'Länge', value: `${currentLength}m` },
-                        { label: 'EAN', value: PRODUCT_SPECS_DATA[product.id].gtin },
+                        { label: 'EAN', value: currentLength === 50 ? '4270004984200' : PRODUCT_SPECS_DATA[product.id].gtin },
                         { label: 'Einsatz', value: PRODUCT_SPECS_DATA[product.id].application, full: true },
                       ].map((spec, i) => (
                         <div key={i} className={cn("flex flex-col", spec.full && "col-span-2")}>
