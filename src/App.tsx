@@ -1450,8 +1450,7 @@ const ProductSection = () => {
                     <span className="text-[9px] md:text-[10px] text-gray-400 font-bold ml-1 uppercase tracking-widest">({product.reviewsCount} REVIEWS)</span>
                   </div>
 
-                   {/* Stock Level Indicator */}
-                  {(() => {
+                    {(() => {
                     const selectedColor = selectedColors[product.id] || 'Schwarz';
                     const stockKey = `${product.id}_${selectedColor}_${currentLength}`;
                     const legacyStockKey = `${product.id}_${selectedColor}`;
