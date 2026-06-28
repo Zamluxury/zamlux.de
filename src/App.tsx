@@ -2720,8 +2720,9 @@ const changePage = (page: PageType) => {
   setCurrentPage(page);
 };
  useEffect(() => {
-  const page = pathToPage[window.location.pathname] || 'home';
-  setCurrentPage(page);
+  const page = pathToPage[window.location.pathname] || 'home';setCurrentPage(page);
+  const productId = new URLSearchParams(window.location.search).get('id');
+if (productId) { setSpecModalProduct(productId); }
 
   const handlePopState = () => {
     const page = pathToPage[window.location.pathname] || 'home';
