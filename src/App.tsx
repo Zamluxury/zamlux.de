@@ -1215,7 +1215,7 @@ const Header = ({ onAuthClick, onCartClick, onPageChange }: { onAuthClick: () =>
   );
 };
 
-const ProductSection = () => {
+const ProductSection = ({ setCurrentProductSlug }: { setCurrentProductSlug: (slug: string | null) => void }) => {
   const { toggleComparison, comparisonList, addToCart, stock } = useApp();
   const [selectedLengths, setSelectedLengths] = useState<Record<string, number>>(
     PRODUCTS.reduce((acc, p) => ({ ...acc, [p.id]: p.availableLengths[0].length }), {})
@@ -2014,7 +2014,7 @@ function MainContent({ onAuthClick, onCartClick, onCheckoutClick, currentPage, s
             className="relative"
           >
             <FeatureHighlights />
-            <ProductSection />
+            <ProductSection setCurrentProductSlug={setCurrentProductSlug} />
           </div>
           <GlobalReviews />
         </>
