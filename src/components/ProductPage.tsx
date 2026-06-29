@@ -35,15 +35,12 @@ export default function ProductPage({ slug, onClose, onCartClick }: { slug: stri
   const lengthData = product.availableLengths.find(l => l.length === mapping.length)!;
   const [added, setAdded] = useState(false);
 
-  const image = mapping.color === 'Orange' ? (product.gallery?.[1] || product.image) : product.image;
-
   const handleBuy = () => {
     addToCart(mapping.productId, mapping.length, mapping.color);
     setAdded(true);
     if (onCartClick) onCartClick();
     setTimeout(() => setAdded(false), 2000);
   };
-
 
   return (
     <div className="min-h-screen bg-white">
@@ -140,4 +137,5 @@ export default function ProductPage({ slug, onClose, onCartClick }: { slug: stri
     </div>
   );
 }
+
 
