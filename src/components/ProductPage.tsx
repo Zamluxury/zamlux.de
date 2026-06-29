@@ -47,6 +47,11 @@ export default function ProductPage({ slug, onClose, onCartClick }: { slug: stri
     <div className="min-h-screen bg-white">
       {/* Breadcrumb */}
       <div className="bg-gray-50 border-b border-gray-100 py-3">
+      <div className="container mx-auto px-4 flex justify-end mb-1">
+        <button onClick={onCartClick} className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-xl font-black text-xs uppercase tracking-widest hover:bg-blue-700 transition-all">
+          <ShoppingCart size={14} /> Warenkorb
+        </button>
+      </div>
         <div className="container mx-auto px-4 flex items-center gap-2 text-[11px] font-bold text-gray-400 uppercase tracking-widest">
           <button onClick={onClose} className="hover:text-blue-600 flex items-center gap-1">
             <ArrowLeft size={12} /> Startseite
@@ -138,6 +143,7 @@ export default function ProductPage({ slug, onClose, onCartClick }: { slug: stri
     </div>
   );
 }
+
 
 
 
