@@ -2726,7 +2726,7 @@ const changePage = (page: PageType) => {
   const page = pathToPage[window.location.pathname] || 'home';
   setCurrentPage(page);
 
-  const handlePopState = () => {
+  const handlePopState = () => { if (!window.location.pathname.startsWith("/produkt/")) { setCurrentProductSlug(null); }
     const page = pathToPage[window.location.pathname] || 'home';
     setCurrentPage(page);
   };
