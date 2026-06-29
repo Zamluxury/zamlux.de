@@ -1070,36 +1070,6 @@ const Header = ({ onAuthClick, onCartClick, onPageChange }: { onAuthClick: () =>
 
           {/* Action Actions Section */}
           <div className="flex items-center gap-3 md:gap-6 lg:gap-10 shrink-0">
-            {/* Language Switcher */}
-            <div className="relative group/lang cursor-pointer select-none z-50">
-              <button className="flex items-center gap-1.5 md:gap-2 px-2.5 py-1.5 md:px-3 md:py-2 bg-gray-50 hover:bg-gray-100 rounded-xl border border-gray-200/60 transition-all text-xs md:text-sm font-black text-gray-700">
-                <span className="text-base leading-none">{locale === 'de' ? 'рџ‡©рџ‡Є' : 'рџ‡¬рџ‡§'}</span>
-                <span className="hidden sm:inline uppercase tracking-wider">{locale}</span>
-                <ChevronDown size={12} className="text-gray-400 group-hover/lang:rotate-180 transition-transform duration-300" />
-              </button>
-              
-              <div className="absolute right-0 top-full mt-2 bg-white border border-gray-100 rounded-xl shadow-xl py-1.5 min-w-[125px] opacity-0 translate-y-2 pointer-events-none group-hover/lang:opacity-100 group-hover/lang:translate-y-0 group-hover/lang:pointer-events-auto transition-all duration-200">
-                <button 
-                  onClick={() => setLocale('de')}
-                  className={cn(
-                    "w-full flex items-center gap-2.5 px-4 py-2 text-left text-xs font-black transition-colors hover:bg-blue-50/50 hover:text-blue-700",
-                    locale === 'de' ? "text-blue-700 bg-blue-50/30" : "text-gray-700"
-                  )}
-                >
-                  <span className="text-sm">рџ‡©рџ‡Є</span> Deutsch
-                </button>
-                <button 
-                  onClick={() => setLocale('en')}
-                  className={cn(
-                    "w-full flex items-center gap-2.5 px-4 py-2 text-left text-xs font-black transition-colors hover:bg-blue-50/50 hover:text-blue-700",
-                    locale === 'en' ? "text-blue-700 bg-blue-50/30" : "text-gray-700"
-                  )}
-                >
-                  <span className="text-sm">рџ‡¬рџ‡§</span> English
-                </button>
-              </div>
-            </div>
-
             <div 
               onClick={() => {
                 if (user) {
