@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import ProductPage from './components/ProductPage';
 import { 
   Truck, 
@@ -198,7 +198,7 @@ const Lightbox = ({ image, onClose, layoutId }: { image: string; onClose: () => 
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-white/5 md:bg-white/90 md:shadow-sm backdrop-blur px-5 py-2 rounded-full border border-white/10 md:border-gray-100 text-white/40 md:text-gray-400 text-[9px] font-black uppercase tracking-[0.2em] pointer-events-none select-none">
             <span className="flex items-center gap-2 font-mono">ESC</span>
             <span className="w-1 h-1 rounded-full bg-white/20 md:bg-gray-300" />
-            SchlieГџen
+            Schließen
           </div>
 
           <motion.div
@@ -368,8 +368,8 @@ const KontaktPage = ({ onClose }: { onClose: () => void }) => {
   const [error, setError] = useState<string | null>(null);
 
   const openingHours = [
-    { day: t('ct_mon_fri'), time: "08:00 вЂ“ 18:00", open: true },
-    { day: t('ct_sat'), time: "10:00 вЂ“ 14:00", open: true },
+    { day: t('ct_mon_fri'), time: "08:00 – 18:00", open: true },
+    { day: t('ct_sat'), time: "10:00 – 14:00", open: true },
     { day: t('ct_sun_holidays'), time: t('ct_closed'), open: false },
   ];
 
@@ -412,7 +412,7 @@ const KontaktPage = ({ onClose }: { onClose: () => void }) => {
               icon: <Phone size={24} className="text-blue-600" />,
               title: t('ct_phone_label').replace(':', ''),
               main: "+49 155 604 45708",
-              sub: "MoвЂ“Fr, 8:00вЂ“17:00 Uhr",
+              sub: "Mo–Fr, 8:00–17:00 Uhr",
               color: "bg-blue-50 border-blue-100"
             },
             {
@@ -674,7 +674,7 @@ const VersandPage = ({ onClose }: { onClose: () => void }) => {
   );
 };
 
-// --- RÜCKGABE PAGE ---
+// --- RUCKGABE PAGE ---
 const RueckgabePage = ({ onClose }: { onClose: () => void }) => {
   const { t } = useApp();
   return (
@@ -721,37 +721,37 @@ const FAQ_ITEMS_DE = [
     items: [
       {
         q: "Was ist H07RN-F?",
-        a: "H07RN-F ist eine schwere Gummischlauchleitung fГјr hГ¶chste mechanische Belastung. Die Bezeichnung steht fГјr harmonisierte Leitung (H), 450/750V Nennspannung (07), Natur- oder Synthetik-Kautschuk-Isolierung (R) und AuГџenmantel aus Polychloropren-Kautschuk (N), flexibel (F)."
+        a: "H07RN-F ist eine schwere Gummischlauchleitung für höchste mechanische Belastung. Die Bezeichnung steht für harmonisierte Leitung (H), 450/750V Nennspannung (07), Natur- oder Synthetik-Kautschuk-Isolierung (R) und Außenmantel aus Polychloropren-Kautschuk (N), flexibel (F)."
       },
       {
-        q: "FГјr den AuГџenbereich geeignet?",
-        a: "Ja, H07RN-F Kabel sind nach VDE-Standard fГјr den dauerhaften Einsatz im Freien zugelassen. Sie sind UV-bestГ¤ndig, witterungsfest und widerstandsfГ¤hig gegen Ozon und Г–le."
+        q: "Für den Außenbereich geeignet?",
+        a: "Ja, H07RN-F Kabel sind nach VDE-Standard für den dauerhaften Einsatz im Freien zugelassen. Sie sind UV-beständig, witterungsfest und widerstandsfähig gegen Ozon und Öle."
       },
       {
-        q: "FГјr Baustellen geeignet?",
-        a: "Absolut. Diese Leitung ist speziell als Baustellenkabel konzipiert. Sie hГ¤lt mechanischen Beanspruchungen durch schwere GerГ¤te, Werkzeuge und raue UntergrГјnde problemlos stand."
+        q: "Für Baustellen geeignet?",
+        a: "Absolut. Diese Leitung ist speziell als Baustellenkabel konzipiert. Sie hält mechanischen Beanspruchungen durch schwere Geräte, Werkzeuge und raue Untergründe problemlos stand."
       },
       {
         q: "Unterschied 3G1.5, 3G2.5 und 5G2.5?",
-        a: "Die Zahl vor dem 'G' steht fГјr die Anzahl der Adern, 'G' bedeutet mit Schutzleiter (GrГјn-Gelb), und die Zahl danach fГјr den Querschnitt in mmВІ. 3G-Kabel werden fГјr 230V Wechselstrom (z.B. WerkstattgerГ¤te) genutzt, 5G-Kabel fГјr 400V Drehstrom (Starkstrom)."
+        a: "Die Zahl vor dem 'G' steht für die Anzahl der Adern, 'G' bedeutet mit Schutzleiter (Grün-Gelb), und die Zahl danach für den Querschnitt in mm². 3G-Kabel werden für 230V Wechselstrom (z.B. Werkstattgeräte) genutzt, 5G-Kabel für 400V Drehstrom (Starkstrom)."
       },
       {
         q: "Lieferzeit innerhalb Deutschlands?",
-        a: "Wir versenden direkt aus unserem Lager in Deutschland. Die Regellieferzeit mit DHL oder Hermes betrГ¤gt 1 bis 3 Werktage nach Bestellung."
+        a: "Wir versenden direkt aus unserem Lager in Deutschland. Die Regellieferzeit mit DHL oder Hermes beträgt 1 bis 3 Werktage nach Bestellung."
       }
     ]
   },
   {
     category: "Bestellung & Zahlung",
     items: [
-      { q: "Welche Zahlungsmethoden akzeptieren Sie?", a: "Wir akzeptieren sichere Zahlungen per PayPal, Visa, Mastercard, Apple Pay, Google Pay, Klarna sowie SEPA-BankГјberweisung." },
-      { q: "Gibt es einen Mindestbestellwert?", a: "Ja, der Mindestbestellwert betrГ¤gt 50 в‚¬. Die Lieferung ist fГјr Sie immer kostenlos." },
+      { q: "Welche Zahlungsmethoden akzeptieren Sie?", a: "Wir akzeptieren sichere Zahlungen per PayPal, Visa, Mastercard, Apple Pay, Google Pay, Klarna sowie SEPA-Banküberweisung." },
+      { q: "Gibt es einen Mindestbestellwert?", a: "Ja, der Mindestbestellwert beträgt 50 €. Die Lieferung ist für Sie immer kostenlos." },
     ]
   },
   {
     category: "Versand & Lieferung",
     items: [
-      { q: "Wie lange dauert die Lieferung?", a: "Standardbestellungen werden innerhalb von 1вЂ“3 Werktagen geliefert." },
+      { q: "Wie lange dauert die Lieferung?", a: "Standardbestellungen werden innerhalb von 1–3 Werktagen geliefert." },
     ]
   },
 ];
@@ -774,7 +774,7 @@ const FAQ_ITEMS_EN = [
       },
       {
         q: "Difference between 3G1.5, 3G2.5, and 5G2.5?",
-        a: "The number before 'G' indicates the number of cores, 'G' means with a protective conductor (green-yellow), and the number after is the cross-section in mmВІ. 3G cables are used for 230V AC (e.g. workshop equipment), and 5G cables for 400V three-phase current (heavy power)."
+        a: "The number before 'G' indicates the number of cores, 'G' means with a protective conductor (green-yellow), and the number after is the cross-section in mm². 3G cables are used for 230V AC (e.g. workshop equipment), and 5G cables for 400V three-phase current (heavy power)."
       },
       {
         q: "Delivery time within Germany?",
@@ -786,13 +786,13 @@ const FAQ_ITEMS_EN = [
     category: "Ordering & Payment",
     items: [
       { q: "Which payment methods do you accept?", a: "We accept secure payments via PayPal, Visa, Mastercard, Apple Pay, Google Pay, Klarna, and SEPA bank transfer." },
-      { q: "Is there a minimum order value?", a: "Yes, the minimum order value is в‚¬50. Delivery is always free of charge for you." },
+      { q: "Is there a minimum order value?", a: "Yes, the minimum order value is €50. Delivery is always free of charge for you." },
     ]
   },
   {
     category: "Shipping & Delivery",
     items: [
-      { q: "How long does delivery take?", a: "Standard orders are delivered within 1вЂ“3 business days." },
+      { q: "How long does delivery take?", a: "Standard orders are delivered within 1–3 business days." },
     ]
   },
 ];
@@ -811,7 +811,7 @@ const FAQPage = ({ onClose }: { onClose: () => void }) => {
     <div className="bg-white min-h-[60vh]">
       <Breadcrumbs page={t('nav_faq')} onHomeClick={onClose} />
       <div className="container mx-auto px-4 max-w-4xl py-16">
-        <h1 className="text-4xl font-black text-gray-900 mb-12 tracking-tight">{t('faq_title_main') || "HГ¤ufig gestellte Fragen"}</h1>
+        <h1 className="text-4xl font-black text-gray-900 mb-12 tracking-tight">{t('faq_title_main') || "Häufig gestellte Fragen"}</h1>
         <div className="space-y-10 mb-14">
           {faqItems.map((category) => (
             <div key={category.category}>
@@ -954,7 +954,7 @@ const CartDrawer = ({ isOpen, onClose, onCheckoutClick }: { isOpen: boolean; onC
                   Zur Kasse gehen
                 </Button>
                 <p className="text-[9px] text-center text-gray-400 font-bold uppercase tracking-widest">
-                  Sichere SSL-VerschlГјsselung &bull; Kauf auf Rechnung mГ¶glich
+                  Sichere SSL-Verschlüsselung &bull; Kauf auf Rechnung möglich
                 </p>
               </div>
             )}
@@ -967,10 +967,10 @@ const CartDrawer = ({ isOpen, onClose, onCheckoutClick }: { isOpen: boolean; onC
 
 const GlobalReviews = () => {
   const reviews = [
-    { name: "Thomas M.", date: "Gestern", rating: 5, text: "Hervorragende QualitГ¤t der H07RN-F Leitung. Schneller Versand (2 Tage) und top verpackt. Sehr zu empfehlen!" },
-    { name: "Bauservice Wagner", date: "Vor 3 Tagen", rating: 5, text: "Wir beziehen unsere Baustellenkabel nur noch Гјber Zamluxury. Robuste MГ¤ntel und faire Preise. Absolut zuverlГ¤ssig." },
-    { name: "Klaus H.", date: "Letzte Woche", rating: 5, text: "Die H05VV-F Leitung ist perfekt fГјr meine Zwecke. Sehr flexibel und gut zu verarbeiten. MarkenqualitГ¤t eben." },
-    { name: "Elektro-Schmidt", date: "Vor 2 Wochen", rating: 5, text: "High-End QualitГ¤t. Die PUR Leitung H07BQ-F ist unzerstГ¶rbar auf unseren Baustellen. Schnelle Lieferung direkt ab Lager Berlin." },
+    { name: "Thomas M.", date: "Gestern", rating: 5, text: "Hervorragende Qualität der H07RN-F Leitung. Schneller Versand (2 Tage) und top verpackt. Sehr zu empfehlen!" },
+    { name: "Bauservice Wagner", date: "Vor 3 Tagen", rating: 5, text: "Wir beziehen unsere Baustellenkabel nur noch über Zamluxury. Robuste Mäntel und faire Preise. Absolut zuverlässig." },
+    { name: "Klaus H.", date: "Letzte Woche", rating: 5, text: "Die H05VV-F Leitung ist perfekt für meine Zwecke. Sehr flexibel und gut zu verarbeiten. Markenqualität eben." },
+    { name: "Elektro-Schmidt", date: "Vor 2 Wochen", rating: 5, text: "High-End Qualität. Die PUR Leitung H07BQ-F ist unzerstörbar auf unseren Baustellen. Schnelle Lieferung direkt ab Lager Berlin." },
   ];
 
   return (
@@ -1124,7 +1124,7 @@ const Header = ({ onAuthClick, onCartClick, onPageChange }: { onAuthClick: () =>
           <div className="flex items-center justify-center">
             <div className="hidden lg:flex items-center justify-center gap-12 xl:gap-20">
               {[
-                { label: locale === 'en' ? 'About Us' : 'Über uns', id: 'ueber_uns' },
+                { label: locale === 'en' ? 'About Us' : 'Uber uns', id: 'ueber_uns' },
                 { label: t('vs_free_shipping'), id: 'versand' },
                 { label: t('rt_badge'), id: 'rueckgabe' },
                 { label: t('nav_contact'), id: 'kontakt' },
@@ -1156,7 +1156,7 @@ const Header = ({ onAuthClick, onCartClick, onPageChange }: { onAuthClick: () =>
             <nav className="p-4 flex flex-col gap-1">
               {[
                 { label: locale === 'en' ? 'Home' : 'Startseite', id: 'home' },
-                { label: locale === 'en' ? 'About Us' : 'Über uns', id: 'ueber_uns' },
+                { label: locale === 'en' ? 'About Us' : 'Uber uns', id: 'ueber_uns' },
                 { label: t('vs_free_shipping'), id: 'versand' },
                 { label: t('rt_badge'), id: 'rueckgabe' },
                 { label: t('nav_contact'), id: 'kontakt' },
@@ -1165,7 +1165,7 @@ const Header = ({ onAuthClick, onCartClick, onPageChange }: { onAuthClick: () =>
                 { label: locale === 'en' ? 'Privacy Policy' : 'Datenschutz', id: 'datenschutz' },
                 { label: locale === 'en' ? 'Legal Notice' : 'Impressum', id: 'impressum' },
                 { label: locale === 'en' ? 'Cancellation' : 'Widerruf', id: 'widerruf' },
-                { label: locale === 'en' ? 'Buyer Protection' : 'KГ¤uferschutz', id: 'kaeuferschutz' },
+                { label: locale === 'en' ? 'Buyer Protection' : 'Käuferschutz', id: 'kaeuferschutz' },
               ].map((link) => (
                 <button
                   key={link.id}
@@ -1235,23 +1235,23 @@ const ProductSection = ({ setCurrentProductSlug }: { setCurrentProductSlug: (slu
           "name": "Was ist H07RN-F Gummikabel?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "H07RN-F ist eine schwere Gummischlauchleitung fГјr hГ¶chste mechanische Beanspruchung. Sie ist Г¶lbestГ¤ndig, flammwidrig und fГјr den Einsatz im Freien sowie auf Baustellen nach VDE zertifiziert."
+            "text": "H07RN-F ist eine schwere Gummischlauchleitung für höchste mechanische Beanspruchung. Sie ist ölbeständig, flammwidrig und für den Einsatz im Freien sowie auf Baustellen nach VDE zertifiziert."
           }
         },
         {
           "@type": "Question",
-          "name": "Ist das Kabel fГјr den AuГџenbereich geeignet?",
+          "name": "Ist das Kabel für den Außenbereich geeignet?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Ja, H07RN-F Gummikabel sind speziell fГјr den dauerhaften Einsatz im Freien konzipiert. Sie sind UV-bestГ¤ndig, wasserfest und extrem witterungsbestГ¤ndig."
+            "text": "Ja, H07RN-F Gummikabel sind speziell für den dauerhaften Einsatz im Freien konzipiert. Sie sind UV-beständig, wasserfest und extrem witterungsbeständig."
           }
         },
         {
           "@type": "Question",
-          "name": "Ist es fГјr die Baustelle geeignet?",
+          "name": "Ist es für die Baustelle geeignet?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Absolut. Unsere Kabel sind als Baustellenkabel klassifiziert und halten der Belastung durch Maschinen, Fahrzeuge und raue OberflГ¤chen stand."
+            "text": "Absolut. Unsere Kabel sind als Baustellenkabel klassifiziert und halten der Belastung durch Maschinen, Fahrzeuge und raue Oberflächen stand."
           }
         }
       ]
@@ -1381,9 +1381,9 @@ const ProductSection = ({ setCurrentProductSlug }: { setCurrentProductSlug: (slu
                         </h3>
                         <div className="text-[10px] md:text-xs font-bold text-gray-500 mt-1 flex flex-wrap items-center gap-x-2 opacity-80 uppercase tracking-wider">
                           <span>{PRODUCT_SPECS_DATA[product.id].crossSection}</span>
-                          <span className="text-blue-200 inline">вЂў</span>
+                          <span className="text-blue-200 inline">•</span>
                           <span>{PRODUCT_SPECS_DATA[product.id].length}</span>
-                          <span className="text-blue-200 inline">вЂў</span>
+                          <span className="text-blue-200 inline">•</span>
                           <span>{PRODUCT_SPECS_DATA[product.id].voltage}</span>
                         </div>
                       </div>
@@ -1436,7 +1436,7 @@ const ProductSection = ({ setCurrentProductSlug }: { setCurrentProductSlug: (slu
                           onClick={() => setSpecModalProduct(product.id)}
                           className="text-[8px] md:text-[9px] font-black text-blue-600 uppercase tracking-widest hover:underline flex items-center gap-1 group"
                         >
-                          VollstГ¤ndige Spezifikation 
+                          Vollständige Spezifikation 
                           <ChevronRight size={10} className="group-hover:translate-x-0.5 transition-transform" />
                         </button>
                     </div>
@@ -1446,7 +1446,7 @@ const ProductSection = ({ setCurrentProductSlug }: { setCurrentProductSlug: (slu
                         { label: 'Querschnitt', value: PRODUCT_SPECS_DATA[product.id].crossSection },
                         { label: 'Spannung', value: PRODUCT_SPECS_DATA[product.id].voltage },
                         { label: 'Farbe', value: selectedColors[product.id] || 'Schwarz' },
-                        { label: 'LГ¤nge', value: `${currentLength}m` },
+                        { label: 'Länge', value: `${currentLength}m` },
                         { label: 'EAN', value: currentLength === 50 ? '4270004984200' : PRODUCT_SPECS_DATA[product.id].gtin },
                         { label: 'Einsatz', value: PRODUCT_SPECS_DATA[product.id].application, full: true },
                       ].map((spec, i) => (
@@ -1460,7 +1460,7 @@ const ProductSection = ({ setCurrentProductSlug }: { setCurrentProductSlug: (slu
 
                   {/* Color Selection */}
                   <div className="mb-4 bg-gray-50/70 p-2.5 rounded-2xl border border-gray-100">
-                    <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest leading-none block mb-2">Mantelfarbe wГ¤hlen</span>
+                    <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest leading-none block mb-2">Mantelfarbe wählen</span>
                     <div className="flex gap-2">
                       {['Schwarz', 'Orange'].map((colorName) => {
                         const isSelected = (selectedColors[product.id] || 'Schwarz') === colorName;
@@ -1491,7 +1491,7 @@ const ProductSection = ({ setCurrentProductSlug }: { setCurrentProductSlug: (slu
                   {/* Length Selection */}
                   {product.availableLengths.length > 1 && (
                     <div className="mb-4 bg-gray-50/70 p-2.5 rounded-2xl border border-gray-100">
-                      <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest leading-none block mb-2">KabellГ¤nge wГ¤hlen</span>
+                      <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest leading-none block mb-2">Kabellänge wählen</span>
                       <div className="flex gap-2">
                         {product.availableLengths.map((lenObj) => {
                           const isSelected = currentLength === lenObj.length;
@@ -1523,7 +1523,7 @@ const ProductSection = ({ setCurrentProductSlug }: { setCurrentProductSlug: (slu
                             {priceInfo.value}
                           </div>
                           <div className="text-[8px] md:text-[9px] font-black text-blue-500 uppercase tracking-widest whitespace-nowrap">
-                            ({(lengthData.price / currentLength).toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} в‚¬/m)
+                            ({(lengthData.price / currentLength).toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} €/m)
                           </div>
                         </div>
                         <div className="text-[7px] md:text-[8px] font-bold text-gray-400 mt-1 uppercase tracking-tight">
@@ -1542,7 +1542,7 @@ const ProductSection = ({ setCurrentProductSlug }: { setCurrentProductSlug: (slu
                       const productStock = stock[stockKey] ?? stock[legacyStockKey] ?? getDefaultStockVal(product.id, selectedColor, currentLength);
                       return (
                         <Button 
-                            onClick={() => { const SLUG_MAP = { p1: { Schwarz: { 50: "kab3-15-50m-sw", 100: "kab3-15-100m-sw" }, Orange: { 50: "kab3-15-50m-or", 100: "kab3-15-100m-or" } }, p2: { Schwarz: { 100: "kab3-25-100m-sw" }, Orange: { 100: "kab3-25-100m-or" } }, p3: { Schwarz: { 100: "kab5-25-100m-sw" }, Orange: { 100: "kab5-25-100m-or" } } }; addToCart(product.id, currentLength, 1, selectedColor); const slug = SLUG_MAP[product.id]?.[selectedColor]?.[currentLength]; if (slug) setCurrentProductSlug(slug); }}
+                            onClick={() => { const SLUG_MAP = { p1: { Schwarz: { 50: "kab3-15-50m-sw", 100: "kab3-15-100m-sw" }, Orange: { 50: "kab3-15-50m-or", 100: "kab3-15-100m-or" } }, p2: { Schwarz: { 100: "kab3-25-100m-sw" }, Orange: { 100: "kab3-25-100m-or" } }, p3: { Schwarz: { 100: "kab5-25-100m-sw" }, Orange: { 100: "kab5-25-100m-or" } } }; addToCart(product.id, currentLength, 1, selectedColor); const slug = SLUG_MAP[product.id]?.[selectedColor]?.[currentLength]; if (slug) window.history.pushState({}, "", "/produkt/" + slug); setCurrentProductSlug(slug); }}
                           disabled={productStock === 0}
                           className={cn(
                             "h-10 md:h-11 rounded-xl px-4 font-black gap-2 shadow-lg active:scale-95 transition-all text-[10px] uppercase tracking-widest text-white cursor-pointer",
@@ -1633,7 +1633,7 @@ const CookieBanner = () => {
   return (
     <div className="fixed bottom-0 left-0 right-0 z-[100] p-4 flex justify-center">
       <div className="bg-white border shadow-2xl p-6 max-w-4xl w-full flex items-center gap-6 rounded-2xl">
-        <div className="flex-1 text-sm">Wir verwenden Cookies fГјr ein optimales Erlebnis.</div>
+        <div className="flex-1 text-sm">Wir verwenden Cookies für ein optimales Erlebnis.</div>
         <Button onClick={handleAccept}>Akzeptieren</Button>
       </div>
     </div>
@@ -1673,10 +1673,10 @@ const AuthModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
         await login(email, password);
       } else {
         if (!firstName.trim() || !lastName.trim()) {
-          throw new Error('Bitte fГјllen Sie Vorname und Nachname aus.');
+          throw new Error('Bitte füllen Sie Vorname und Nachname aus.');
         }
         if (password !== confirmPassword) {
-          throw new Error('Die PasswГ¶rter stimmen nicht Гјberein.');
+          throw new Error('Die Passwörter stimmen nicht überein.');
         }
         if (password.length < 6) {
           throw new Error('Das Passwort muss mindestens 6 Zeichen lang sein.');
@@ -1690,9 +1690,9 @@ const AuthModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }
       if (err.code === 'auth/email-already-in-use') {
         errMsg = 'Diese E-Mail-Adresse wird bereits verwendet.';
       } else if (err.code === 'auth/wrong-password' || err.code === 'auth/invalid-credential') {
-        errMsg = 'UngГјltige E-Mail-Adresse oder falsches Passwort.';
+        errMsg = 'Ungültige E-Mail-Adresse oder falsches Passwort.';
       } else if (err.code === 'auth/invalid-email') {
-        errMsg = 'Die E-Mail-Adresse ist ungГјltig.';
+        errMsg = 'Die E-Mail-Adresse ist ungültig.';
       } else if (err.code === 'auth/weak-password') {
         errMsg = 'Das Passwort ist zu schwach (mindestens 6 Zeichen erforderlich).';
       }
@@ -1860,7 +1860,7 @@ const SpecModal = ({ isOpen, onClose, productId }: { isOpen: boolean; onClose: (
                     {[
                       { label: 'Artikelnummer', value: product.artNr },
                       { label: 'EAN / GTIN', value: product.gtin },
-                      { label: 'Status', value: 'Ab Lager verfГјgbar (DE)' },
+                      { label: 'Status', value: 'Ab Lager verfügbar (DE)' },
                     ].map((item, i) => (
                       <div key={i} className="flex justify-between p-3 bg-gray-50/50 rounded-xl border border-gray-100 border-dashed">
                         <span className="text-[10px] font-bold text-gray-400 uppercase tracking-tight">{item.label}</span>
@@ -1878,7 +1878,7 @@ const SpecModal = ({ isOpen, onClose, productId }: { isOpen: boolean; onClose: (
                   <div className="grid grid-cols-1 gap-3">
                     {[
                       { label: 'Nennspannung', value: specs.voltage },
-                      { label: 'PrГјfspannung', value: '2500 V' },
+                      { label: 'Prüfspannung', value: '2500 V' },
                       { label: 'Leiterquerschnitt', value: specs.crossSection },
                       { label: 'Aderanzahl', value: specs.crossSection.split('G')[0] },
                     ].map((item, i) => (
@@ -1896,13 +1896,13 @@ const SpecModal = ({ isOpen, onClose, productId }: { isOpen: boolean; onClose: (
                 <div className="space-y-4">
                   <h3 className="text-xs font-black uppercase tracking-widest text-gray-400 flex items-center gap-2">
                     <Construction size={14} className="text-blue-600" />
-                    QualitГ¤tsmerkmale
+                    Qualitätsmerkmale
                   </h3>
                   <div className="grid grid-cols-1 gap-3">
                     {[
                       { label: 'Zertifikate', value: specs.certification },
-                      { label: 'FlexibilitГ¤t', value: specs.flexibility },
-                      { label: 'UV-BestГ¤ndig', value: 'Ja' },
+                      { label: 'Flexibilität', value: specs.flexibility },
+                      { label: 'UV-Beständig', value: 'Ja' },
                       { label: 'Eignung', value: specs.usage },
                     ].map((item, i) => (
                       <div key={i} className="flex flex-col gap-1 p-3 bg-gray-50 rounded-xl border border-gray-100">
@@ -1916,11 +1916,11 @@ const SpecModal = ({ isOpen, onClose, productId }: { isOpen: boolean; onClose: (
                 <div className="p-5 bg-gray-900 rounded-2xl border border-gray-800 space-y-4 shadow-xl">
                   <div className="flex items-center gap-2">
                     <FileText size={16} className="text-blue-400" />
-                    <span className="text-xs font-black uppercase tracking-widest text-white">DatenblГ¤tter</span>
+                    <span className="text-xs font-black uppercase tracking-widest text-white">Datenblätter</span>
                   </div>
                   <div className="space-y-2">
                     <a 
-                      href={`/datasheets/H07RN-F-${specs.crossSection.replace(/\s/g, '').replace('mmВІ', '')}-100m.pdf`}
+                      href={`/datasheets/H07RN-F-${specs.crossSection.replace(/\s/g, '').replace('mm²', '')}-100m.pdf`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full flex items-center justify-between p-3 bg-white/5 hover:bg-white/10 rounded-xl border border-white/10 transition-all group"
@@ -1929,7 +1929,7 @@ const SpecModal = ({ isOpen, onClose, productId }: { isOpen: boolean; onClose: (
                         <div className="w-8 h-8 rounded-lg bg-red-500/20 flex items-center justify-center text-red-400 text-[10px] font-black">PDF</div>
                         <div className="text-left">
                           <div className="text-[10px] font-black text-white uppercase tracking-tight">Technisches Datenblatt</div>
-                          <div className="text-[8px] text-white/40 font-bold uppercase tracking-tighter">H07RN-F-{specs.crossSection.replace(/\s/g, '').replace('mmВІ', '')}-100m.pdf</div>
+                          <div className="text-[8px] text-white/40 font-bold uppercase tracking-tighter">H07RN-F-{specs.crossSection.replace(/\s/g, '').replace('mm²', '')}-100m.pdf</div>
                         </div>
                       </div>
                       <div className="flex items-center gap-2">
@@ -1944,10 +1944,10 @@ const SpecModal = ({ isOpen, onClose, productId }: { isOpen: boolean; onClose: (
 
             <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-[10px] text-gray-400 font-medium italic">
-                Alle Angaben basieren auf VDE-Richtlinien und Herstellerangaben. IrrtГјmer vorbehalten.
+                Alle Angaben basieren auf VDE-Richtlinien und Herstellerangaben. Irrtümer vorbehalten.
               </p>
               <Button onClick={onClose} className="w-full md:w-auto bg-blue-600 text-white hover:bg-blue-700 px-8 h-12 rounded-xl font-black uppercase tracking-widest text-xs shadow-lg shadow-blue-600/20">
-                Fenster schlieГџen
+                Fenster schließen
               </Button>
             </div>
           </motion.div>
@@ -2060,9 +2060,9 @@ function MainContent({ onAuthClick, onCartClick, onCheckoutClick, currentPage, s
           <div>
             <h4 className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] mb-2 md:mb-4 text-white/50 hover:text-blue-400 transition-colors cursor-default">Shop Service</h4>
             <ul className="text-slate-400 text-[11px] md:text-[13px] space-y-1.5 md:space-y-2 font-medium">
-              <li><button onClick={() => setCurrentPage('ueber_uns')} className="hover:text-blue-400 transition-colors">Über uns</button></li>
+              <li><button onClick={() => setCurrentPage('ueber_uns')} className="hover:text-blue-400 transition-colors">Uber uns</button></li>
               <li><button onClick={() => setCurrentPage('versand')} className="hover:text-blue-400 transition-colors">Kostenlose Lieferung</button></li>
-              <li><button onClick={() => setCurrentPage('rueckgabe')} className="hover:text-blue-400 transition-colors">RГјckgabe</button></li>
+              <li><button onClick={() => setCurrentPage('rueckgabe')} className="hover:text-blue-400 transition-colors">Rückgabe</button></li>
               <li><button onClick={() => setCurrentPage('kontakt')} className="hover:text-blue-400 transition-colors">Kontakt</button></li>
               <li><button onClick={() => setCurrentPage('faq')} className="hover:text-blue-400 transition-colors">FAQ</button></li>
               <li><button onClick={() => setCurrentPage('admin')} className="hover:text-blue-400 transition-colors">Lagerverwaltung</button></li>
@@ -2075,17 +2075,17 @@ function MainContent({ onAuthClick, onCartClick, onCheckoutClick, currentPage, s
               <li><button onClick={() => setCurrentPage('datenschutz')} className="hover:text-blue-400 transition-colors">Datenschutz</button></li>
               <li><button onClick={() => setCurrentPage('impressum')} className="hover:text-blue-400 transition-colors">Impressum</button></li>
               <li><button onClick={() => setCurrentPage('widerruf')} className="hover:text-blue-400 transition-colors">Widerrufsbelehrung</button></li>
-              <li><button onClick={() => setCurrentPage('kaeuferschutz')} className="hover:text-blue-400 transition-colors">KГ¤uferschutz</button></li>
+              <li><button onClick={() => setCurrentPage('kaeuferschutz')} className="hover:text-blue-400 transition-colors">Käuferschutz</button></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] mb-2 md:mb-4 text-white/50 hover:text-blue-400 transition-colors cursor-default">Trust & QualitГ¤t</h4>
+            <h4 className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] mb-2 md:mb-4 text-white/50 hover:text-blue-400 transition-colors cursor-default">Trust & Qualität</h4>
             <div className="space-y-1.5 md:space-y-2">
               {[
                 { icon: <Truck className="w-4 h-4" />, text: "Versand DE", desc: "1-3 Werktage" },
-                { icon: <Box className="w-4 h-4" />, text: "Direkt ab Lager", desc: "Sofort verfГјgbar" },
+                { icon: <Box className="w-4 h-4" />, text: "Direkt ab Lager", desc: "Sofort verfügbar" },
                 { icon: <Zap className="w-4 h-4" />, text: "Hersteller-Direkt", desc: "Bester Preis" },
-                { icon: <ShieldCheck className="w-4 h-4" />, text: "VDE zertifiziert", desc: "HГ¶chste QualitГ¤t" },
+                { icon: <ShieldCheck className="w-4 h-4" />, text: "VDE zertifiziert", desc: "Höchste Qualität" },
                 { icon: <div className="text-[11px] font-black tracking-tighter leading-none border-[1.5px] border-current px-1 rounded-[1px]">CE</div>, text: "CE & RoHS", desc: "Zertifiziert" },
                 { icon: <User className="w-4 h-4" />, text: "B2B & B2C", desc: "Grosshandel" },
               ].map((item, i) => (
@@ -2252,7 +2252,7 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
       return orderData.id;
     } catch (err: any) {
       console.error('PayPal createOrder error:', err);
-      setError('PayPal-Zahlung fehlgeschlagen. Bitte prГјfen Sie Ihre Zahlungsdaten oder wГ¤hlen Sie eine andere Zahlungsart.');
+      setError('PayPal-Zahlung fehlgeschlagen. Bitte prüfen Sie Ihre Zahlungsdaten oder wählen Sie eine andere Zahlungsart.');
       throw err;
     }
   };
@@ -2276,13 +2276,13 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
       }
     } catch (err: any) {
       console.error('PayPal capture error:', err);
-      setError('PayPal-Zahlung fehlgeschlagen. Bitte prГјfen Sie Ihre Zahlungsdaten oder wГ¤hlen Sie eine andere Zahlungsart.');
+      setError('PayPal-Zahlung fehlgeschlagen. Bitte prüfen Sie Ihre Zahlungsdaten oder wählen Sie eine andere Zahlungsart.');
     }
   };
 
   const onPayPalError = (err: any) => {
     console.error('PayPal SDK error:', err);
-    setError('PayPal-Zahlung fehlgeschlagen. Bitte prГјfen Sie Ihre Zahlungsdaten oder wГ¤hlen Sie eine andere Zahlungsart.');
+    setError('PayPal-Zahlung fehlgeschlagen. Bitte prüfen Sie Ihre Zahlungsdaten oder wählen Sie eine andere Zahlungsart.');
   };
 
   const onPayPalCancel = () => {
@@ -2335,7 +2335,7 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                        "text-[9px] font-black uppercase tracking-[0.2em] hidden sm:block",
                        step === s ? "text-gray-900" : "text-gray-300"
                      )}>
-                       {s === 'shipping' ? 'Versand' : s === 'payment' ? 'Zahlung' : 'PrГјfen'}
+                       {s === 'shipping' ? 'Versand' : s === 'payment' ? 'Zahlung' : 'Prüfen'}
                      </span>
                   </div>
                 ))}
@@ -2361,7 +2361,7 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-8">
                 <div>
                   <h2 className="text-3xl font-black text-gray-900 tracking-tighter mb-2">Lieferadresse</h2>
-                  <p className="text-gray-500 text-sm font-medium">Wohin dГјrfen wir Ihre Bestellung senden?</p>
+                  <p className="text-gray-500 text-sm font-medium">Wohin dürfen wir Ihre Bestellung senden?</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-5">
                   <div className="space-y-1 text-black">
@@ -2383,7 +2383,7 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                     />
                   </div>
                   <div className="md:col-span-2 space-y-1 text-black">
-                    <label className="text-[9px] md:text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">StraГџe und Hausnummer</label>
+                    <label className="text-[9px] md:text-[10px] font-black text-gray-400 uppercase tracking-widest ml-1">Straße und Hausnummer</label>
                     <Input 
                       placeholder="Musterweg 123" 
                       className="rounded-xl border-gray-200 h-10 md:h-12 focus:ring-blue-600/10 focus:border-blue-600 text-black placeholder:text-gray-400"
@@ -2456,7 +2456,7 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-8">
                 <div>
                   <h2 className="text-3xl font-black text-gray-900 tracking-tighter mb-2">Zahlungsart</h2>
-                  <p className="text-gray-500 text-sm font-medium">Wie mГ¶chten Sie bezahlen?</p>
+                  <p className="text-gray-500 text-sm font-medium">Wie möchten Sie bezahlen?</p>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                   {paymentOptions.map(option => (
@@ -2486,7 +2486,7 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                   ))}
                 </div>
                 <div className="pt-6 flex gap-4">
-                  <Button variant="outline" onClick={() => setStep('shipping')} className="flex-1 h-14 rounded-xl border-gray-200 font-bold text-gray-500 uppercase tracking-widest text-[10px]">ZurГјck</Button>
+                  <Button variant="outline" onClick={() => setStep('shipping')} className="flex-1 h-14 rounded-xl border-gray-200 font-bold text-gray-500 uppercase tracking-widest text-[10px]">Zurück</Button>
                   
                   <div className="flex-[2]">
                     {paymentMethod === 'paypal' ? (
@@ -2503,7 +2503,7 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                         onClick={() => setStep('review')}
                         className="w-full bg-blue-600 hover:bg-blue-700 h-14 text-sm font-black uppercase tracking-[0.2em] rounded-xl shadow-xl shadow-blue-600/20 active:scale-[0.98] transition-all text-white border-none"
                       >
-                        Bestellung prГјfen
+                        Bestellung prüfen
                       </Button>
                     )}
                   </div>
@@ -2515,7 +2515,7 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
               <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-8">
                 <div>
                   <h2 className="text-3xl font-black text-gray-900 tracking-tighter mb-2">Zusammenfassung</h2>
-                  <p className="text-gray-500 text-sm font-medium">Bitte prГјfen Sie Ihre Angaben ein letztes Mal.</p>
+                  <p className="text-gray-500 text-sm font-medium">Bitte prüfen Sie Ihre Angaben ein letztes Mal.</p>
                 </div>
                 
                 <div className="grid md:grid-cols-2 gap-8">
@@ -2523,7 +2523,7 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                     <div className="p-6 bg-gray-50 rounded-3xl border border-gray-100">
                       <div className="flex items-center justify-between mb-4">
                         <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Lieferadresse</h3>
-                        <button onClick={() => setStep('shipping')} className="text-[9px] font-black text-blue-600 uppercase hover:underline">Г„ndern</button>
+                        <button onClick={() => setStep('shipping')} className="text-[9px] font-black text-blue-600 uppercase hover:underline">Ändern</button>
                       </div>
                       <div className="text-sm font-bold text-gray-900 leading-relaxed">
                         {formData.vorname} {formData.nachname}<br/>
@@ -2535,7 +2535,7 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                     <div className="p-6 bg-gray-50 rounded-3xl border border-gray-100">
                       <div className="flex items-center justify-between mb-4">
                         <h3 className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Zahlungsart</h3>
-                        <button onClick={() => setStep('payment')} className="text-[9px] font-black text-blue-600 uppercase hover:underline">Г„ndern</button>
+                        <button onClick={() => setStep('payment')} className="text-[9px] font-black text-blue-600 uppercase hover:underline">Ändern</button>
                       </div>
                       <div className="flex items-center justify-between p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
                          <span className="text-sm font-black text-gray-900 uppercase tracking-tight">
@@ -2576,12 +2576,12 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                 </div>
 
                 <div className="pt-6 flex flex-col sm:flex-row gap-4">
-                  <Button variant="outline" onClick={() => setStep('payment')} className="flex-1 h-14 rounded-xl border-gray-200 font-bold text-gray-500 uppercase tracking-widest text-[10px]">ZurГјck</Button>
+                  <Button variant="outline" onClick={() => setStep('payment')} className="flex-1 h-14 rounded-xl border-gray-200 font-bold text-gray-500 uppercase tracking-widest text-[10px]">Zurück</Button>
                   <Button 
                     onClick={handlePlaceOrder}
                     className="flex-[2] bg-blue-600 hover:bg-blue-700 h-14 text-sm font-black uppercase tracking-[0.2em] rounded-xl shadow-2xl shadow-blue-600/30 active:scale-[0.98] transition-all text-white border-none"
                   >
-                    Bestellung zahlungspflichtig abschlieГџen
+                    Bestellung zahlungspflichtig abschließen
                   </Button>
                 </div>
               </motion.div>
@@ -2593,9 +2593,9 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                   <CheckCircle2 size={40} className="text-white" strokeWidth={3} />
                 </div>
                 <div>
-                  <h2 className="text-4xl font-black text-gray-900 tracking-tighter mb-4">Vielen Dank fГјr Ihre Bestellung!</h2>
+                  <h2 className="text-4xl font-black text-gray-900 tracking-tighter mb-4">Vielen Dank für Ihre Bestellung!</h2>
                   <p className="text-gray-500 text-lg font-medium max-w-md mx-auto">
-                    Wir haben Ihre Bestellung erhalten Рё eine BestГ¤tigung an <span className="text-blue-600 font-bold">{formData.email}</span> gesendet.
+                    Wir haben Ihre Bestellung erhalten и eine Bestätigung an <span className="text-blue-600 font-bold">{formData.email}</span> gesendet.
                   </p>
                 </div>
                 <div className="pt-8">
@@ -2603,7 +2603,7 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                     onClick={onClose}
                     className="bg-gray-900 hover:bg-gray-800 h-14 px-10 text-sm font-black uppercase tracking-[0.2em] rounded-xl transition-all shadow-xl shadow-gray-200 text-white"
                   >
-                    ZurГјck zum Shop
+                    Zurück zum Shop
                   </Button>
                 </div>
               </motion.div>
@@ -2644,7 +2644,7 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                  </div>
                  <div className="flex items-center gap-2">
                     <Truck size={14} className="text-blue-500" />
-                    <span className="text-[10px] font-black text-gray-900 uppercase">DHL & Hermes 1вЂ“3 Tage</span>
+                    <span className="text-[10px] font-black text-gray-900 uppercase">DHL & Hermes 1–3 Tage</span>
                  </div>
               </div>
             </div>
