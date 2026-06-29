@@ -1,4 +1,4 @@
-﻿import { useApp } from '../context';
+import { useApp } from '../context';
 import { PRODUCTS, PRODUCT_SPECS_DATA } from '../constants';
 import { ShoppingCart, Star, Truck, ShieldCheck, ArrowLeft, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -31,7 +31,7 @@ export default function ProductPage({ slug, onClose, onCartClick }: { slug: stri
     return (
       <div className="min-h-screen flex items-center justify-center flex-col gap-4">
         <p className="text-2xl font-black text-gray-900">Produkt nicht gefunden</p>
-        <Button onClick={onClose}>ZurГјck zur Startseite</Button>
+        <Button onClick={() => { window.history.pushState({}, "", "/"); onClose(); }}>Zurück zur Startseite</Button>
       </div>
     );
   }
@@ -59,7 +59,7 @@ export default function ProductPage({ slug, onClose, onCartClick }: { slug: stri
         </button>
       </div>
         <div className="container mx-auto px-4 flex items-center gap-2 text-[11px] font-bold text-gray-400 uppercase tracking-widest">
-          <button onClick={onClose} className="hover:text-blue-600 flex items-center gap-1">
+          <button onClick={() => { window.history.pushState({}, "", "/"); onClose(); }} className="hover:text-blue-600 flex items-center gap-1">
             <ArrowLeft size={12} /> Startseite
           </button>
           <span>/</span>
@@ -78,13 +78,13 @@ export default function ProductPage({ slug, onClose, onCartClick }: { slug: stri
           <div className="flex flex-col gap-6">
             <div>
               <Badge className="bg-blue-100 text-blue-700 border-none mb-3 text-[10px] font-black uppercase tracking-widest">
-                {mapping.color === 'Orange' ? 'рџџ  Orange' : 'вљ« Schwarz'}
+                {mapping.color === 'Orange' ? '🟠 Orange' : '⚫ Schwarz'}
               </Badge>
               <h1 className="text-3xl font-black text-gray-900 tracking-tight mb-2">
                 <span className="text-blue-600">H07RN-F</span> Gummikabel Baustellenkabel
               </h1>
               <p className="text-gray-500 font-bold text-sm uppercase tracking-wider">
-                {specs.crossSection} В· {mapping.length}m В· {specs.voltage}
+                {specs.crossSection} · {mapping.length}m · {specs.voltage}
               </p>
             </div>
 
@@ -100,7 +100,7 @@ export default function ProductPage({ slug, onClose, onCartClick }: { slug: stri
             <div className="bg-blue-50 rounded-2xl p-6 border border-blue-100">
               <div className="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-1">Bestellpreis</div>
               <div className="text-4xl font-black text-gray-900">{lengthData.price.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' })}</div>
-              <div className="text-xs text-gray-400 font-bold mt-1">inkl. 19% MwSt. В· Kostenlose Lieferung</div>
+              <div className="text-xs text-gray-400 font-bold mt-1">inkl. 19% MwSt. · Kostenlose Lieferung</div>
             </div>
 
             {/* Specs */}
@@ -109,7 +109,7 @@ export default function ProductPage({ slug, onClose, onCartClick }: { slug: stri
                 { label: 'Kabeltyp', value: specs.type },
                 { label: 'Querschnitt', value: specs.crossSection },
                 { label: 'Spannung', value: specs.voltage },
-                { label: 'LГ¤nge', value: `${mapping.length}m` },
+                { label: 'Länge', value: `${mapping.length}m` },
                 { label: 'Farbe', value: mapping.color },
                 { label: 'EAN', value: specs.gtin },
               ].map((s, i) => (
@@ -137,7 +137,7 @@ export default function ProductPage({ slug, onClose, onCartClick }: { slug: stri
             {/* Trust */}
             <div className="flex gap-4 pt-2">
               <div className="flex items-center gap-2 text-xs font-bold text-gray-500">
-                <Truck size={14} className="text-blue-600" /> 1вЂ“3 Werktage
+                <Truck size={14} className="text-blue-600" /> 1–3 Werktage
               </div>
               <div className="flex items-center gap-2 text-xs font-bold text-gray-500">
                 <ShieldCheck size={14} className="text-green-600" /> CE & RoHS
