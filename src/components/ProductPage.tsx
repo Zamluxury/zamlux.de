@@ -41,7 +41,7 @@ export default function ProductPage({ slug, onClose, onCartClick }: { slug: stri
     if (onCartClick) onCartClick();
     setTimeout(() => setAdded(false), 2000);
     setTimeout(() => setAdded(false), 2000);
-  };
+
 
   return (
     <div className="min-h-screen bg-white">
