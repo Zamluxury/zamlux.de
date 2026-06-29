@@ -1571,7 +1571,7 @@ const ProductSection = () => {
                       const productStock = stock[stockKey] ?? stock[legacyStockKey] ?? getDefaultStockVal(product.id, selectedColor, currentLength);
                       return (
                         <Button 
-                          onClick={() => addToCart(product.id, currentLength, 1, selectedColor)}
+                            onClick={() => { const SLUG_MAP = { p1: { Schwarz: { 50: "kab3-15-50m-sw", 100: "kab3-15-100m-sw" }, Orange: { 50: "kab3-15-50m-or", 100: "kab3-15-100m-or" } }, p2: { Schwarz: { 100: "kab3-25-100m-sw" }, Orange: { 100: "kab3-25-100m-or" } }, p3: { Schwarz: { 100: "kab5-25-100m-sw" }, Orange: { 100: "kab5-25-100m-or" } } }; addToCart(product.id, currentLength, 1, selectedColor); const slug = SLUG_MAP[product.id]?.[selectedColor]?.[currentLength]; if (slug) setCurrentProductSlug(slug); }}
                           disabled={productStock === 0}
                           className={cn(
                             "h-10 md:h-11 rounded-xl px-4 font-black gap-2 shadow-lg active:scale-95 transition-all text-[10px] uppercase tracking-widest text-white cursor-pointer",
