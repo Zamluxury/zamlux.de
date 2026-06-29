@@ -1,0 +1,6 @@
+﻿content = open('src/App.tsx', 'r', encoding='utf-8').read()
+content = content.replace('\u00dc', 'Ü')
+content = content.replace('Гњber', 'Über')
+content = content.replace('Гњ', 'Ü')
+open('src/App.tsx', 'w', encoding='utf-8').write(content)
+print('Done')
