@@ -2731,6 +2731,7 @@ useEffect(() => {
             currentProductSlug={currentProductSlug}
             setCurrentProductSlug={setCurrentProductSlug}
           />
+          <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
           <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} onCheckoutClick={() => { setIsCartOpen(false); setIsCheckoutOpen(true); }} />
           <CheckoutModal isOpen={isCheckoutOpen} onClose={() => setIsCheckoutOpen(false)} />
         </div>
