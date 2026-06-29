@@ -2761,9 +2761,11 @@ useEffect(() => {
             currentProductSlug={currentProductSlug}
             setCurrentProductSlug={setCurrentProductSlug}
           />
+          <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} onCheckoutClick={() => { setIsCartOpen(false); setIsCheckoutOpen(true); }} />
           <CheckoutModal isOpen={isCheckoutOpen} onClose={() => setIsCheckoutOpen(false)} />
         </div>
       </AppProvider>
     </PayPalScriptProvider>
   );
 }
+
