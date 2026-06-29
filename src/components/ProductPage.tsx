@@ -19,6 +19,12 @@ const PRODUCT_URL_MAP: Record<string, { productId: string; color: 'Schwarz' | 'O
 
 export default function ProductPage({ slug, onClose, onCartClick }: { slug: string; onClose: () => void; onCartClick?: () => void }) {
   const { addToCart } = useApp();
+  React.useEffect(() => {
+    window.history.pushState(null, '', window.location.href);
+    const handleBack = () => { window.location.href = '/'; };
+    window.addEventListener('popstate', handleBack);
+    return () => window.removeEventListener('popstate', handleBack);
+  }, []);
   const mapping = PRODUCT_URL_MAP[slug];
 
   if (!mapping) {
