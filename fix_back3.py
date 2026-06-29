@@ -1,0 +1,5 @@
+﻿content = open('src/components/ProductPage.tsx', 'r', encoding='utf-8').read()
+content = content.replace("import { useState } from 'react';", "import { useState, useEffect } from 'react';")
+content = content.replace("  const { addToCart } = useApp();", "  const { addToCart } = useApp();\n  useEffect(() => {\n    window.history.pushState(null, '', window.location.href);\n    const onBack = () => { window.location.href = '/'; };\n    window.addEventListener('popstate', onBack);\n    return () => window.removeEventListener('popstate', onBack);\n  }, []);")
+open('src/components/ProductPage.tsx', 'w', encoding='utf-8').write(content)
+print('Done')

@@ -3,7 +3,7 @@ import { PRODUCTS, PRODUCT_SPECS_DATA } from '../constants';
 import { ShoppingCart, Star, Truck, ShieldCheck, ArrowLeft, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 
 const PRODUCT_URL_MAP: Record<string, { productId: string; color: 'Schwarz' | 'Orange'; length: number }> = {
@@ -19,6 +19,12 @@ const PRODUCT_URL_MAP: Record<string, { productId: string; color: 'Schwarz' | 'O
 
 export default function ProductPage({ slug, onClose, onCartClick }: { slug: string; onClose: () => void; onCartClick?: () => void }) {
   const { addToCart } = useApp();
+  useEffect(() => {
+    window.history.pushState(null, '', window.location.href);
+    const onBack = () => { window.location.href = '/'; };
+    window.addEventListener('popstate', onBack);
+    return () => window.removeEventListener('popstate', onBack);
+  }, []);
   const mapping = PRODUCT_URL_MAP[slug];
 
   if (!mapping) {
