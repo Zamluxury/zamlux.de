@@ -37,7 +37,7 @@ export default function ProductPage({ slug, onClose, onCartClick }: { slug: stri
   const [added, setAdded] = useState(false);
 
   const handleBuy = () => {
-    addToCart(mapping.productId, mapping.length, mapping.color);
+    addToCart(mapping.productId, mapping.length, 1, mapping.color);
     setAdded(true);
     if (onCartClick) onCartClick();
     setTimeout(() => setAdded(false), 2000);
@@ -143,6 +143,7 @@ export default function ProductPage({ slug, onClose, onCartClick }: { slug: stri
     </div>
   );
 }
+
 
 
 
