@@ -1,4 +1,5 @@
 ﻿import React from 'react';
+import ProductPage from './components/ProductPage';
 import { 
   Truck, 
   ShieldCheck, 
