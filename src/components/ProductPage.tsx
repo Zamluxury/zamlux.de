@@ -1,4 +1,4 @@
-import { useApp } from '../context';
+﻿import { useApp } from '../context';
 import { PRODUCTS, PRODUCT_SPECS_DATA } from '../constants';
 import { ShoppingCart, Star, Truck, ShieldCheck, ArrowLeft, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -17,7 +17,7 @@ const PRODUCT_URL_MAP: Record<string, { productId: string; color: 'Schwarz' | 'O
   'kab5-25-100m-or': { productId: 'p3', color: 'Orange',  length: 100 },
 };
 
-export default function ProductPage({ slug, onClose }: { slug: string; onClose: () => void }) {
+export default function ProductPage({ slug, onClose, onCartClick }: { slug: string; onClose: () => void; onCartClick?: () => void }) {
   const { addToCart } = useApp();
   const mapping = PRODUCT_URL_MAP[slug];
 
@@ -25,7 +25,7 @@ export default function ProductPage({ slug, onClose }: { slug: string; onClose: 
     return (
       <div className="min-h-screen flex items-center justify-center flex-col gap-4">
         <p className="text-2xl font-black text-gray-900">Produkt nicht gefunden</p>
-        <Button onClick={onClose}>Zurück zur Startseite</Button>
+        <Button onClick={onClose}>ZurГјck zur Startseite</Button>
       </div>
     );
   }
@@ -37,9 +37,9 @@ export default function ProductPage({ slug, onClose }: { slug: string; onClose: 
 
   const image = mapping.color === 'Orange' ? (product.gallery?.[1] || product.image) : product.image;
 
-  const handleBuy = () => {
-    addToCart(product.id, mapping.length, 1, mapping.color);
     setAdded(true);
+    if (onCartClick) onCartClick();
+    setTimeout(() => setAdded(false), 2000);
     setTimeout(() => setAdded(false), 2000);
   };
 
@@ -67,13 +67,13 @@ export default function ProductPage({ slug, onClose }: { slug: string; onClose: 
           <div className="flex flex-col gap-6">
             <div>
               <Badge className="bg-blue-100 text-blue-700 border-none mb-3 text-[10px] font-black uppercase tracking-widest">
-                {mapping.color === 'Orange' ? '🟠 Orange' : '⚫ Schwarz'}
+                {mapping.color === 'Orange' ? 'рџџ  Orange' : 'вљ« Schwarz'}
               </Badge>
               <h1 className="text-3xl font-black text-gray-900 tracking-tight mb-2">
                 <span className="text-blue-600">H07RN-F</span> Gummikabel Baustellenkabel
               </h1>
               <p className="text-gray-500 font-bold text-sm uppercase tracking-wider">
-                {specs.crossSection} · {mapping.length}m · {specs.voltage}
+                {specs.crossSection} В· {mapping.length}m В· {specs.voltage}
               </p>
             </div>
 
@@ -89,7 +89,7 @@ export default function ProductPage({ slug, onClose }: { slug: string; onClose: 
             <div className="bg-blue-50 rounded-2xl p-6 border border-blue-100">
               <div className="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-1">Bestellpreis</div>
               <div className="text-4xl font-black text-gray-900">{lengthData.price.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' })}</div>
-              <div className="text-xs text-gray-400 font-bold mt-1">inkl. 19% MwSt. · Kostenlose Lieferung</div>
+              <div className="text-xs text-gray-400 font-bold mt-1">inkl. 19% MwSt. В· Kostenlose Lieferung</div>
             </div>
 
             {/* Specs */}
@@ -98,7 +98,7 @@ export default function ProductPage({ slug, onClose }: { slug: string; onClose: 
                 { label: 'Kabeltyp', value: specs.type },
                 { label: 'Querschnitt', value: specs.crossSection },
                 { label: 'Spannung', value: specs.voltage },
-                { label: 'Länge', value: `${mapping.length}m` },
+                { label: 'LГ¤nge', value: `${mapping.length}m` },
                 { label: 'Farbe', value: mapping.color },
                 { label: 'EAN', value: specs.gtin },
               ].map((s, i) => (
@@ -126,7 +126,7 @@ export default function ProductPage({ slug, onClose }: { slug: string; onClose: 
             {/* Trust */}
             <div className="flex gap-4 pt-2">
               <div className="flex items-center gap-2 text-xs font-bold text-gray-500">
-                <Truck size={14} className="text-blue-600" /> 1–3 Werktage
+                <Truck size={14} className="text-blue-600" /> 1вЂ“3 Werktage
               </div>
               <div className="flex items-center gap-2 text-xs font-bold text-gray-500">
                 <ShieldCheck size={14} className="text-green-600" /> CE & RoHS

@@ -1996,7 +1996,7 @@ function MainContent({ onAuthClick, onCartClick, onCheckoutClick, currentPage, s
     return <AdminPage onClose={goHome} />;
   }
 
-  if (currentProductSlug) { return <ProductPage slug={currentProductSlug} onClose={() => { setCurrentProductSlug(null); window.history.pushState({}, '', '/'); }} />; }
+  if (currentProductSlug) { return <ProductPage slug={currentProductSlug} onCartClick={() => { setCurrentProductSlug(null); }} onClose={() => { setCurrentProductSlug(null); window.history.pushState({}, '', '/'); }} />; }
   if (currentPage === 'account') {
     return <AccountPage onClose={goHome} />;
   }
