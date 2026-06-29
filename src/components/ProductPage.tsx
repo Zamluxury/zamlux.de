@@ -33,6 +33,7 @@ export default function ProductPage({ slug, onClose, onCartClick }: { slug: stri
   const product = PRODUCTS.find(p => p.id === mapping.productId)!;
   const specs = PRODUCT_SPECS_DATA[mapping.productId];
   const lengthData = product.availableLengths.find(l => l.length === mapping.length)!;
+  const image = mapping.color === 'Orange' ? (product.gallery?.[1] || product.image) : product.image;
   const [added, setAdded] = useState(false);
 
   const handleBuy = () => {
@@ -137,5 +138,6 @@ export default function ProductPage({ slug, onClose, onCartClick }: { slug: stri
     </div>
   );
 }
+
 
 
