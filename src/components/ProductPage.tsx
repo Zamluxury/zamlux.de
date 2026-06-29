@@ -37,10 +37,12 @@ export default function ProductPage({ slug, onClose, onCartClick }: { slug: stri
 
   const image = mapping.color === 'Orange' ? (product.gallery?.[1] || product.image) : product.image;
 
+  const handleBuy = () => {
+    addToCart(mapping.productId, mapping.length, mapping.color);
     setAdded(true);
     if (onCartClick) onCartClick();
     setTimeout(() => setAdded(false), 2000);
-    setTimeout(() => setAdded(false), 2000);
+  };
 
 
   return (
@@ -138,3 +140,4 @@ export default function ProductPage({ slug, onClose, onCartClick }: { slug: stri
     </div>
   );
 }
+
