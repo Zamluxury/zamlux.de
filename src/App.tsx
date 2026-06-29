@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import ProductPage from './components/ProductPage';
 import { 
   Truck, 
@@ -1124,7 +1124,7 @@ const Header = ({ onAuthClick, onCartClick, onPageChange }: { onAuthClick: () =>
           <div className="flex items-center justify-center">
             <div className="hidden lg:flex items-center justify-center gap-12 xl:gap-20">
               {[
-                { label: locale === 'en' ? 'About Us' : 'Uber uns', id: 'ueber_uns' },
+                { label: locale === 'en' ? 'About Us' : 'Über uns', id: 'ueber_uns' },
                 { label: t('vs_free_shipping'), id: 'versand' },
                 { label: t('rt_badge'), id: 'rueckgabe' },
                 { label: t('nav_contact'), id: 'kontakt' },
@@ -1156,7 +1156,7 @@ const Header = ({ onAuthClick, onCartClick, onPageChange }: { onAuthClick: () =>
             <nav className="p-4 flex flex-col gap-1">
               {[
                 { label: locale === 'en' ? 'Home' : 'Startseite', id: 'home' },
-                { label: locale === 'en' ? 'About Us' : 'Uber uns', id: 'ueber_uns' },
+                { label: locale === 'en' ? 'About Us' : 'Über uns', id: 'ueber_uns' },
                 { label: t('vs_free_shipping'), id: 'versand' },
                 { label: t('rt_badge'), id: 'rueckgabe' },
                 { label: t('nav_contact'), id: 'kontakt' },
@@ -2060,7 +2060,7 @@ function MainContent({ onAuthClick, onCartClick, onCheckoutClick, currentPage, s
           <div>
             <h4 className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] mb-2 md:mb-4 text-white/50 hover:text-blue-400 transition-colors cursor-default">Shop Service</h4>
             <ul className="text-slate-400 text-[11px] md:text-[13px] space-y-1.5 md:space-y-2 font-medium">
-              <li><button onClick={() => setCurrentPage('ueber_uns')} className="hover:text-blue-400 transition-colors">Uber uns</button></li>
+              <li><button onClick={() => setCurrentPage('ueber_uns')} className="hover:text-blue-400 transition-colors">Über uns</button></li>
               <li><button onClick={() => setCurrentPage('versand')} className="hover:text-blue-400 transition-colors">Kostenlose Lieferung</button></li>
               <li><button onClick={() => setCurrentPage('rueckgabe')} className="hover:text-blue-400 transition-colors">Rückgabe</button></li>
               <li><button onClick={() => setCurrentPage('kontakt')} className="hover:text-blue-400 transition-colors">Kontakt</button></li>
@@ -2739,4 +2739,5 @@ useEffect(() => {
     </PayPalScriptProvider>
   );
 }
+
 
