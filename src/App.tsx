@@ -2719,11 +2719,9 @@ const changePage = (page: PageType) => {
   window.history.pushState({}, '', pageToPath[page] || '/');
   setCurrentPage(page);
 };
- useEffect(() => {
-  const page = pathToPage[window.location.pathname] || 'home';setCurrentPage(page);
-  const productId = new URLSearchParams(window.location.search).get('id');
-if (productId) { setSpecModalProduct(productId); }
-
+useEffect(() => {
+    const page = pathToPage[window.location.pathname] || 'home';
+    setCurrentPage(page);
   const handlePopState = () => {
     const page = pathToPage[window.location.pathname] || 'home';
     setCurrentPage(page);
