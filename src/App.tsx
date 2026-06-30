@@ -2687,7 +2687,7 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
 export default function App() {
 const [currentPage, setCurrentPage] = useState<PageType>('home');
 const [isAuthOpen, setIsAuthOpen] = useState(false);
-  const [currentProductSlug, setCurrentProductSlug] = useState<string | null>(null);
+  const [currentProductSlug, setCurrentProductSlug] = useState<string | null>(() => { const m = window.location.pathname.match(/^\/produkt\/(.+)$/); return m ? m[1] : null; });
 const [isCartOpen, setIsCartOpen] = useState(false);
 const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 const pageToPath: Record<string, string> = {
@@ -2769,5 +2769,6 @@ useEffect(() => {
     </PayPalScriptProvider>
   );
 }
+
 
 
