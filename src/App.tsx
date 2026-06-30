@@ -1,5 +1,5 @@
-﻿import React from 'react';
-import ProductPage from './components/ProductPage';
+﻿import React, { Suspense, lazy } from 'react';
+const ProductPage = lazy(() => import('./components/ProductPage'));
 import { 
   Truck, 
   ShieldCheck, 
@@ -50,8 +50,8 @@ import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/lib/utils';
 import { saveContactMessage, saveOrder } from './firebase';
-import AdminPage from './components/AdminPage';
-import AccountPage from './components/AccountPage';
+const AdminPage = lazy(() => import('./components/AdminPage'));
+const AccountPage = lazy(() => import('./components/AccountPage'));
 
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
@@ -1962,13 +1962,19 @@ const SpecModal = ({ isOpen, onClose, productId }: { isOpen: boolean; onClose: (
 function MainContent({ onAuthClick, onCartClick, onCheckoutClick, currentPage, setCurrentPage, currentProductSlug, setCurrentProductSlug }: any) {
   const goHome = () => setCurrentPage('home');
 
+  const pageLoader = (
+    <div className='min-h-screen flex items-center justify-center'>
+      <div className='w-8 h-8 border-2 border-gray-200 border-t-blue-600 rounded-full animate-spin' />
+    </div>
+  );
+
   if (currentPage === 'admin') {
-    return <AdminPage onClose={goHome} />;
+    return <Suspense fallback={pageLoader}><AdminPage onClose={goHome} /></Suspense>;
   }
 
-  if (currentProductSlug) { return <ProductPage slug={currentProductSlug} onCartClick={onCartClick} onClose={() => { setCurrentProductSlug(null); }} />; }
+  if (currentProductSlug) { return <Suspense fallback={pageLoader}><ProductPage slug={currentProductSlug} onCartClick={onCartClick} onClose={() => { setCurrentProductSlug(null); }} /></Suspense>; }
   if (currentPage === 'account') {
-    return <AccountPage onClose={goHome} />;
+    return <Suspense fallback={pageLoader}><AccountPage onClose={goHome} /></Suspense>;
   }
 
   const renderPage = () => {
