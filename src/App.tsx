@@ -2198,11 +2198,15 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
   
   const handleStripeCheckout = async () => {
     try {
-      const items = cart.map((item) => ({
-        name: `${product.name} ${item.length}m ${item.color || 'Schwarz'}`,
-        price: lengthData.price,
-        quantity: item.quantity,
-      }));
+      const items = cart.map((item) => {
+              const product = PRODUCTS.find((p) => p.id === item.productId);
+              const lengthData = product?.availableLengths.find((l) => l.length === item.length);
+              return {
+                name: `${product?.name} ${item.length}m ${item.color || 'Schwarz'}`,
+                price: lengthData?.price || 0,
+                quantity: item.quantity,
+              };
+            });
 
       const response = await fetch('/api/create-checkout-session', {
         method: 'POST',
