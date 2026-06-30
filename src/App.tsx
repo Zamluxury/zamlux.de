@@ -2195,6 +2195,32 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
   const vat = totalBruto - subtotalNeto;
   const format = (num: number) => num.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' });
 
+  
+  const handleStripeCheckout = async () => {
+    try {
+      const items = cart.map((item) => ({
+        name: `${product.name} ${item.length}m ${item.color || 'Schwarz'}`,
+        price: lengthData.price,
+        quantity: item.quantity,
+      }));
+
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items, customerEmail: formData.email }),
+      });
+
+      const data = await response.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert('Es gab ein Problem bei der Zahlung. Bitte versuchen Sie es erneut.');
+      }
+    } catch (err) {
+      console.error('Stripe checkout request failed:', err);
+      alert('Es gab ein Problem bei der Zahlung. Bitte versuchen Sie es erneut.');
+    }
+  };
   const handlePlaceOrder = async (extraDetails?: any) => {
     try {
       const orderData = {
@@ -2578,7 +2604,7 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
                 <div className="pt-6 flex flex-col sm:flex-row gap-4">
                   <Button variant="outline" onClick={() => setStep('payment')} className="flex-1 h-14 rounded-xl border-gray-200 font-bold text-gray-500 uppercase tracking-widest text-[10px]">Zurück</Button>
                   <Button 
-                    onClick={handlePlaceOrder}
+                    onClick={handleStripeCheckout}
                     className="flex-[2] bg-blue-600 hover:bg-blue-700 h-14 text-sm font-black uppercase tracking-[0.2em] rounded-xl shadow-2xl shadow-blue-600/30 active:scale-[0.98] transition-all text-white border-none"
                   >
                     Bestellung zahlungspflichtig abschließen
