@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { useApp } from '../context';
 import { PRODUCTS } from '../constants';
 import { db, auth } from '../firebase';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import { collection, onSnapshot, doc, setDoc, query, orderBy, serverTimestamp, writeBatch } from 'firebase/firestore';
 import { 
   ArrowLeft, Lock, Save, Plus, Minus, ShieldCheck, RefreshCw, AlertTriangle, 
@@ -161,51 +161,26 @@ export default function AdminPage({ onClose }: { onClose: () => void }) {
 
   // Check session on mount
   useEffect(() => {
-    const adminSession = localStorage.getItem('zamlux_admin_session');
     const savedRole = localStorage.getItem('zamlux_admin_role');
     const savedLimit = localStorage.getItem('zamlux_low_stock_limit');
     if (savedLimit) {
       setLowStockLimit(parseInt(savedLimit, 10));
     }
-    if (adminSession === 'active' && savedRole) {
-      // If there is already an active user session in Auth, we can use it directly without re-auth
-      if (auth.currentUser) {
+    // Trust only the real Firebase Auth session, never localStorage flags on their own.
+    const unsubAuth = onAuthStateChanged(auth, (user) => {
+      if (user) {
         setIsLoggedIn(true);
-        setUserRole(savedRole as 'Admin' | 'Employee');
-        return;
+        setUserRole((savedRole as 'Admin' | 'Employee') || 'Admin');
+        localStorage.setItem('zamlux_admin_session', 'active');
+        localStorage.setItem('zamlux_admin_role', (savedRole as string) || 'Admin');
+      } else {
+        setIsLoggedIn(false);
+        setUserRole(null);
+        localStorage.removeItem('zamlux_admin_session');
+        localStorage.removeItem('zamlux_admin_role');
       }
-
-      // Silently authenticate with Firebase Auth to ensure real-time Firestore access works
-      const runAuth = async () => {
-        const adminEmail = 'm20850610@gmail.com';
-        const pw1 = '6f1e9c9CCC.';
-        const pw2 = '6f1e9c9CCC';
-        try {
-          await signInWithEmailAndPassword(auth, adminEmail, pw1);
-          setIsLoggedIn(true);
-          setUserRole(savedRole as 'Admin' | 'Employee');
-        } catch {
-          try {
-            await signInWithEmailAndPassword(auth, adminEmail, pw2);
-            setIsLoggedIn(true);
-            setUserRole(savedRole as 'Admin' | 'Employee');
-          } catch {
-            try {
-              // Auto-create the admin user in Firebase Auth if they don't exist yet
-              await createUserWithEmailAndPassword(auth, adminEmail, pw1);
-              setIsLoggedIn(true);
-              setUserRole(savedRole as 'Admin' | 'Employee');
-            } catch (err) {
-              console.warn("Background admin auth and registration skipped/failed:", err);
-              // Fallback: don't block user interface in case of dev/offline environment, but we warn
-              setIsLoggedIn(true);
-              setUserRole(savedRole as 'Admin' | 'Employee');
-            }
-          }
-        }
-      };
-      runAuth();
-    }
+    });
+    return () => unsubAuth();
   }, []);
 
   // Sync real-time orders and history
@@ -354,26 +329,12 @@ export default function AdminPage({ onClose }: { onClose: () => void }) {
     e.preventDefault();
     const cleanEmail = email.trim().toLowerCase();
     const cleanPassword = password.trim();
-    const isAdminEmail = cleanEmail === 'm20850610@gmail.com' || cleanEmail === 'a10062085@gmail.com';
-    if (isAdminEmail && (cleanPassword === '6f1e9c9CCC.' || cleanPassword === '6f1e9c9CCC')) {
-      try {
-        await signInWithEmailAndPassword(auth, cleanEmail, cleanPassword);
-      } catch (authErr: any) {
-        console.warn("Auth sign-in failed, trying to auto-create user in Auth:", authErr);
-        try {
-          await createUserWithEmailAndPassword(auth, cleanEmail, cleanPassword);
-        } catch (createErr: any) {
-          console.warn("Firebase Auth creation failed:", createErr);
-        }
-      }
-
-      setIsLoggedIn(true);
-      setUserRole('Admin');
-      localStorage.setItem('zamlux_admin_session', 'active');
-      localStorage.setItem('zamlux_admin_role', 'Admin');
-      setError('');
+    setError('');
+    try {
+      await signInWithEmailAndPassword(auth, cleanEmail, cleanPassword);
       playBeep(900, 150);
-    } else {
+    } catch (authErr: any) {
+      console.warn('Admin sign-in failed:', authErr?.code || authErr);
       setError(t('wrong_password'));
       playBeep(300, 300);
     }
@@ -385,10 +346,6 @@ export default function AdminPage({ onClose }: { onClose: () => void }) {
     } catch (err) {
       console.error("Error signing out from auth:", err);
     }
-    setIsLoggedIn(false);
-    setUserRole(null);
-    localStorage.removeItem('zamlux_admin_session');
-    localStorage.removeItem('zamlux_admin_role');
   };
 
   // Setup list of 8 variants
