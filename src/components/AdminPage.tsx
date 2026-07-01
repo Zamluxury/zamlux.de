@@ -74,7 +74,7 @@ export default function AdminPage({ onClose }: { onClose: () => void }) {
   // Localization State - Default is Russian ('ru')
   const [locale, setLocale] = useState<AdminLocale>(() => {
     const saved = localStorage.getItem('zamlux_admin_locale');
-    return (saved as AdminLocale) || 'ru';
+    return (saved as AdminLocale) || 'de';
   });
 
   const t = (key: string, params?: Record<string, string | number>) => translate(locale, key, params);
