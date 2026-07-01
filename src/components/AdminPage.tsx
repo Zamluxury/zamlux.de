@@ -74,7 +74,7 @@ export default function AdminPage({ onClose }: { onClose: () => void }) {
   // Localization State - Default is Russian ('ru')
   const [locale, setLocale] = useState<AdminLocale>(() => {
     const saved = localStorage.getItem('zamlux_admin_locale');
-    return (saved as AdminLocale) || 'de';
+    return (saved as AdminLocale) || 'ru';
   });
 
   const t = (key: string, params?: Record<string, string | number>) => translate(locale, key, params);
@@ -335,7 +335,7 @@ export default function AdminPage({ onClose }: { onClose: () => void }) {
       playBeep(900, 150);
     } catch (authErr: any) {
       console.warn('Admin sign-in failed:', authErr?.code || authErr);
-      setError(t('wrong_password'));
+      setError('Falsche E-Mail-Adresse oder falsches Passwort.');
       playBeep(300, 300);
     }
   };
@@ -671,8 +671,8 @@ export default function AdminPage({ onClose }: { onClose: () => void }) {
             <div className="w-14 h-14 bg-blue-600/15 border border-blue-500/30 rounded-xl flex items-center justify-center mx-auto mb-4 shadow-inner">
               <ShieldCheck className="text-blue-500 w-8 h-8" />
             </div>
-            <h1 className="text-xl md:text-2xl font-black uppercase tracking-wider text-white">{t('wms_title')}</h1>
-            <p className="text-slate-400 text-xs md:text-sm mt-1 uppercase tracking-widest font-bold">{t('erp_subtitle')}</p>
+            <h1 className="text-xl md:text-2xl font-black uppercase tracking-wider text-white">WMS Lagerverwaltung</h1>
+            <p className="text-slate-400 text-xs md:text-sm mt-1 uppercase tracking-widest font-bold">Zamluxury Enterprise ERP</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-4">
@@ -694,7 +694,7 @@ export default function AdminPage({ onClose }: { onClose: () => void }) {
                 type="password"
                 value={password}
                 onChange={e => setPassword(e.target.value)}
-                placeholder={t('password_placeholder')}
+                placeholder="Passwort"
                 className="w-full h-12 px-4 rounded-xl bg-slate-900 border border-white/10 text-white placeholder-slate-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-all font-medium text-sm"
                 required
               />
@@ -711,7 +711,7 @@ export default function AdminPage({ onClose }: { onClose: () => void }) {
               type="submit"
               className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-black uppercase tracking-widest text-xs shadow-lg shadow-blue-600/20 active:scale-95 transition-all cursor-pointer"
             >
-              {t('btn_login')}
+              Anmelden
             </button>
           </form>
 
@@ -720,7 +720,7 @@ export default function AdminPage({ onClose }: { onClose: () => void }) {
             className="w-full h-11 border border-white/10 hover:bg-white/5 text-slate-300 rounded-xl font-black uppercase tracking-widest text-[10px] mt-3 transition-all cursor-pointer flex items-center justify-center gap-2"
           >
             <ArrowLeft size={12} />
-            {t('btn_back_to_shop')}
+            ZurГјck zum Shop
           </button>
         </div>
       </div>
